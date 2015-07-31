@@ -15,48 +15,49 @@ public class TestRoute extends RouteBuilder {
 		from("direct:test").process(new Processor() {
 
 			@Override
-			public void process(Exchange ex) throws Exception {
+			public void process(final Exchange ex) throws Exception {
 				// TODO Auto-generated method stub
-				String str = ex.getIn().getBody(String.class);
-				System.out.println("Exchange body " + str);
+				final String str = ex.getIn().getBody(String.class);
+				System.out.println("Exchange body " + str);\
+				System.out.println("hello");
 			}
 		}).to("mock:result");
 
-		
-		
+
+
 		from("direct:test1").process(new Processor() {
 
 			@Override
-			public void process(Exchange ex) throws Exception {
+			public void process(final Exchange ex) throws Exception {
 				// TODO Auto-generated method stub
 				System.out.println("HI from route");
-				String str = ex.getIn().getBody(String.class);
+				final String str = ex.getIn().getBody(String.class);
 				System.out.println(str);
 			}
 		}).to("mock:result");
-		
-		
+
+
 		from("direct:test2").process(new Processor() {
 
 			@Override
-			public void process(Exchange ex1) throws Exception {
+			public void process(final Exchange ex1) throws Exception {
 				// TODO Auto-generated method stub
-				Ids str = ex1.getIn().getBody(Ids.class);
+				final Ids str = ex1.getIn().getBody(Ids.class);
 				System.out.println("Exchange body " + str.getPid());
 			}
 		}).to("mock:result");
 
-		
+
 		from("direct:test3").process(new Processor() {
 
 			@Override
-			public void process(Exchange ex1) throws Exception {
+			public void process(final Exchange ex1) throws Exception {
 				// TODO Auto-generated method stub
-				Person str = ex1.getIn().getBody(Person.class);
+				final Person str = ex1.getIn().getBody(Person.class);
 				System.out.println("Exchange body " + str.getName());
 			}
 		}).to("mock:result");
-		
+
 		/*.setHeader(Exchange.HTTP_METHOD, constant(HttpMethod.GET))
 				.to("http://localhost:8080/RestPrj/rest/hello/plain2")
 				.process(new Processor() {
@@ -66,7 +67,7 @@ public class TestRoute extends RouteBuilder {
 						// TODO Auto-generated method stub
 						String str = arg0.getIn().getBody(String.class);
 						System.out.println("Exchange body" + str);
-						
+
 						arg0.getIn().setBody(str);
 					}
 				});
