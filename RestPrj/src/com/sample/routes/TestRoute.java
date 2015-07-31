@@ -18,7 +18,7 @@ public class TestRoute extends RouteBuilder {
 			public void process(final Exchange ex) throws Exception {
 				// TODO Auto-generated method stub
 				final String str = ex.getIn().getBody(String.class);
-				System.out.println("Exchange body " + str);\
+				System.out.println("Exchange body " + str);
 				System.out.println("hello");
 			}
 		}).to("mock:result");
