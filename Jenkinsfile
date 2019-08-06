@@ -35,10 +35,6 @@ pipeline {
         echo 'Deploying to env Dev'
       }
     }
-    stage('End') {
-      steps {
-        echo 'End'
-      }
-    }
+    
   }
 }
